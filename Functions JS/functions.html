@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions.js</title>
+</head>
+
+<body>
+    <script>
+        const greetWorld = () => 'Hello, World!'
+        console.log(greetWorld());
+
+        /* 
+        -As a function declaration: (Funciones declaradas)
+
+        function canIVote(age){
+          if(age >= 18){
+            console.log(true)
+          }else{
+            console.log(false)
+          }
+        */
+
+        // - Arrow function: 
+        const canIVote = (age) => {
+            if (age >= 18) {
+                return true
+            } else {
+                return false
+            }
+        }
+        console.log(canIVote(31));
+
+        /*
+        Write a function, agreeOrDisagree(), that takes in two strings, and returns 'You agree!' 
+        if the two strings are the same and 'You disagree!' if the two strings are different. 
+        */
+        const agreeOrDisagree = (string1, string2) => {
+            if (string1 === string2) {
+                return 'You agree!'
+            } else {
+                return 'You disagree!'
+            }
+        }
+        console.log(agreeOrDisagree("yep", "yep"))
+
+        // ¡Ojo! al ppio del flujo de control, -tiene que- ser así: 
+        const lifePhase = age => {
+            if (age < 0 || age > 140) {
+                return 'This is not a valid age'
+            } else if (age < 4) {
+                return 'baby'
+            } else if (age < 13) {
+                return 'child'
+            } else if (age < 20) {
+                return 'teen'
+            } else if (age < 65) {
+                return 'adult'
+            } else if (age < 140) {
+                return 'senior citizen'
+            }
+        }
+        console.log(lifePhase(8));
+
+
+        const lifePhase2 = age => {
+
+            switch (true) {
+                case age < 0:
+                    return 'This is not a valid age.'
+                case age < 3:
+                    return 'baby';
+                case age < 13:
+                    return 'child';
+                case age < 20:
+                    return 'teen';
+                case age < 65:
+                    return 'adult';
+                case age < 75:
+                    return 'senior';
+                case age < 141:
+                    return 'elderly';
+                default:
+                    return "This is not a valid age."
+            }
+        }
+
+
+        console.log(lifePhase2(65));
+
+
+        const lifePhase3 = (age) => {
+            if (age <= 0) {
+                return 'This is not a valid age.'
+            }
+            return age < 3 ? 'baby' :
+                age < 13 ? 'child' :
+                age < 20 ? 'teen' :
+                age < 65 ? 'adult' :
+                age < 140 ? 'senior citizen' :
+                'This is not a valid age';
+
+        }
+        console.log(lifePhase3(-1));
+
+
+
+        /* El ERROR 
+        const lifePhase = (age) => {
+          if(age <= 3 || age > 0){ ---------------->este ppio no sirve como control.
+            return 'baby'
+          }else if(age > 3 || age <= 12){
+            return 'child'
+          }else if(age >= 13 || age <= 19){
+            return 'teen'
+          }else if(age >= 20 || age <= 64){
+            return 'adult'
+          }else if (age >= 65 || age <= 140){
+            return 'senior citizen'
+          }else if(age < 0 || age > 140){
+            return 'This is not a valid age'
+          }
+        } */
+
+
+        //Ejercicio nota final de clase: 
+        //num1= homeworks; num2 = teamwork; num3=playground;
+
+        const finalGrade = (num1, num2, num3) => {
+            let media = [num1 + num2 + num3] / 3
+            console.log(media)
+            if (num1 < 0 || num1 > 100 || num2 < 0 || num2 > 100 || num3 < 0 || num3 > 100) {
+                return 'You have entered an invalid grade.'
+            } else if (media < 59) {
+                return 'F'
+            } else if (media < 69) {
+                return 'D'
+            } else if (media < 79) {
+                return 'C'
+            } else if (media < 89) {
+                return 'B'
+            } else if (media < 100) {
+                return 'A'
+            }
+        }
+        console.log(finalGrade(90, 89, 100));
+
+        // Concat strings: 
+        //1.
+        const reportingForDuty = (rank, lastName) =>
+            `${rank} ${lastName} reporting for duty!`
+        console.log(reportingForDuty('Private', 'Fido'));
+        //2.
+        const sillySentence = (adjective, verb, noun) => `I am so ${adjective} because I ${verb} coding! Time to write some more awesome ${noun}!`
+
+        console.log(sillySentence('excited', 'love', 'functions'));
+
+        // Dados /Dice
+        const rollTheDice = () => {
+            // Math.random() gives us a random number from 0 up to, but not including, 1
+            // We multiplied that by 6 to get a number between 0 and up to, but not including, 6
+            // But since we actually wanted numbers from 1 to 6, inclusive, we added 1
+            //Marh.floor returns the largest integer less than or equal to the given number
+
+            // Math.floor() -> devuelve el máximo entero menor o igual a un número. 
+            //Math.ceil() -> devuelve el entero mayor o igual más próximo a un número dado.
+
+            let die1 = Math.floor(Math.random() * 6 + 1)
+            let die2 = Math.floor(Math.random() * 6 + 1)
+
+            return die1 + die2
+        }
+        console.log(rollTheDice());
+
+
+        // Though an object’s mass remains consistent throughout the universe, 
+        // weight is determined by the force of gravity on an object. Since different 
+        // planets have different gravity, the same object would weigh different amounts
+        // on each of those planets!
+
+        const calculateWeight = (earthWeight, planet) => {
+            switch (planet) {
+                case 'Mercury':
+                    return earthWeight * 0.378;
+                case 'Venus':
+                    return earthWeight * 0.907;
+                case 'Mars':
+                    return earthWeight * 0.377;
+                case 'Jupiter':
+                    return earthWeight * 2.36;
+                case 'Saturn':
+                    return earthWeight * 0.916;
+                default:
+                    return 'Invalid Planet Entry. Try: Mercury, Venus, Mars, Jupiter, or Saturn.'
+            }
+        }
+        console.log(calculateWeight(100, 'Jupiter'))
+
+        // Calculate num of imaginary friends (1/4)
+
+        const numImaginaryFriends = (numF) => {
+            let imF = Math.ceil(numF / 4)
+
+            return imF;
+        }
+        console.log(numImaginaryFriends(20))
+
+        //How old! 3 cases:
+
+        // Write your function here:
+        const howOld = (age, year) => {
+
+            let currentDate = new Date();
+            let currentYear = currentDate.getFullYear();
+            let yearDifference = currentYear - year;
+            let futureAge = age + yearDifference;
+            let yearBorn = currentYear - age;
+
+            //console.log(currentDate)
+            //console.log(currentYear)
+            //console.log(yearDifference)
+            //console.log(futureAge)
+            // console.log(yearBorn)
+            if (year > currentYear) {
+                let differenceFuture = year - currentYear;
+                let ageFuture = age + differenceFuture;
+                // console.log('Future ' + differenceFuture)
+                return `You will be ${ageFuture } ${year}`
+
+            } else if (year < yearBorn) {
+                let differencePast = currentYear - year
+                let yearsBeforeBorn = yearBorn - year;
+                return `The year ${year} was ${yearsBeforeBorn} years before you were born.`
+                    //  console.log('Past: ' + differencePast)
+            } else {
+                let smallAge = year - yearBorn;
+                return `You were ${smallAge} in the year ${year}`
+            }
+
+
+        }
+        console.log('My solution:');
+        console.log(howOld(31, 2050));
+
+        /* 
+Our solution is written as a function expression and uses string interpolation, but it would be equally acceptable to use a function declaration and/or string concatenation
+*/
+
+        const howOld2 = (age, year) => {
+            // The following two lines make it so that our function always knows the current year.
+            let dateToday = new Date();
+            let thisYear = dateToday.getFullYear();
+            // It is totally ok if your function used the current year directly!
+
+            const yearDifference = year - thisYear
+            const newAge = age + yearDifference
+            if (newAge > age) {
+                return `You will be ${newAge} in the year ${year}`
+            } else if (newAge < 0) {
+                return `The year ${year} was ${-newAge} years before you were born`
+            } else {
+                return `You were ${newAge} in the year ${year}`
+            }
+        }
+        console.log('Codecademy solution:');
+        console.log(howOld(31, 2050));
+        // Once your function is written, write function calls to test your code!
+
+        //What relation?
+
+        const whatRelation = percentSharedDNA => {
+            if (percentSharedDNA === 100) {
+                return 'You are likely identical twins.'
+            } else if (percentSharedDNA > 34) {
+                return 'You are likely parent and child or full siblings.'
+            } else if (percentSharedDNA > 13) {
+                return 'You are likely grandparent and grandchild, aunt/uncle and niece/nephew, or half siblings.'
+            } else if (percentSharedDNA > 5) {
+                return 'You are likely 1st cousins.'
+            } else if (percentSharedDNA > 2) {
+                return 'You are likely 2nd cousins.'
+            } else if (percentSharedDNA >= 1) {
+                return 'You are likely 3rd cousins'
+            } else if (percenSharedDNA === 0) {
+                return 'You are likely not related.'
+            }
+        };
+        console.log(whatRelation(34))
+            // Should print 'You are likely grandparent and grandchild, aunt/uncle and niece/nephew, or half siblings.'
+
+        console.log(whatRelation(3))
+            // Should print 'You are likely 2nd cousins.'
+
+        //Tip calculator: 
+        // Write your function here:
+
+        const tipCalculator = (quality, total) => {
+            if (quality === 'bad') {
+                return 5 * total / 100;
+            } else if (quality === 'ok') {
+                return 15 * total / 100;
+            } else if (quality === 'good') {
+                return 20 * total / 100;
+            } else if (quality === 'excellent') {
+                return 30 * total / 100;
+            } else {
+                return 18 * total / 100;
+            }
+        }
+
+
+
+
+        // Uncomment the line below when you're ready to try out your function
+        console.log(tipCalculator('good', 100)) //should return 20
+
+        //
+        const toEmoticon = (meaning) => {
+            switch (meaning) {
+                case 'shrug':
+                    return '|_{"}_|';
+                    break;
+                case 'smiley face':
+                    return ':)';
+                    break;
+                case 'frowny face':
+                    return ':(';
+                    break;
+                case 'winky face':
+                    return ';)';
+                    break;
+                case 'heart':
+                    return '<3';
+                    break;
+                default:
+                    return '|_(* ~ *)_|';
+            }
+        }
+        console.log(toEmoticon("shrug"))
+
+
+        //Pruebas Project Number_Guesser:
+
+        const generateTarget = () => {
+
+            const targetNumber = Math.floor(Math.random() * 9);
+            // console.log(targetNumber);
+
+            return targetNumber
+
+        };
+
+        console.log(generateTarget());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const team = {
+            _players: [{
+                firstName: 'Joanna',
+                lastName: 'Rodionova',
+                age: 31
+            }, {
+                firstName: 'Mikel',
+                lastName: 'Agina',
+                age: 28
+            }, {
+                firstName: 'Laura',
+                lastName: 'Espin',
+                age: 35
+            }],
+            _games: [{
+                opponent: 'Broncos',
+                teamPoints: 57,
+                opponentPoints: 20
+            }, {
+                opponent: 'Prancos',
+                teamPoints: 17,
+                opponentPoints: 32
+            }, {
+                opponent: 'Trincos',
+                teamPoints: 43,
+                opponentPoints: 10
+            }],
+
+            get players() {
+                return this._players;
+            },
+            get games() {
+                return this._games;
+            },
+            addPlayer(firstName, lastName, age) {
+                const player = {
+                    firstName,
+                    lastName,
+                    age
+                };
+                return this._players.push(player)
+            },
+            addGame(opponent, teamPoints, opponentPoints) {
+                const game = {
+                    opponent: opponent,
+                    teamPoints: teamPoints,
+                    opponentPoints: opponentPoints
+                }
+
+                return this._games.push(game);
+            }
+        };
+
+
+        team.addPlayer('Steph', 'Curry', 28);
+        team.addPlayer('Lisa', 'Leslie', 44);
+        team.addPlayer('Bugs', 'Bunny', 76);
+        team.addGame('Catan', 100, 50);
+
+
+        console.log(team.games);
+        console.log(team.players);
+    </script>
+
+
+
+
+</body>
+
+</html>

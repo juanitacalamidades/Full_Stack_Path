@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <script>
+        // Write your code here:
+        //commented is my first try
+        //not using reverse()
+
+        const reverseArray = (array) => {
+
+            let arr = [];
+
+            for (let i = array.length - 1; i >= 0; i--) {
+                // let arr = array[i] 
+                //console.log(array[i])
+                arr.push(array[i])
+
+
+            }
+
+            return arr.join(' ');
+            //console.log(arr)
+            //join() so you can read it better <3
+        }
+
+
+
+
+
+        // When you're ready to test your code, uncomment the below and run:
+
+        const sentence = ['sense.', 'make', 'all', 'will', 'This'];
+
+        console.log(reverseArray(sentence))
+            // Should print ['This', 'will', 'all', 'make', 'sense.'];
+
+
+
+
+        //not using forEach()
+        // Write your code here:
+
+        const greetAliens = aliens => {
+
+            for (let i = 0; i < aliens.length; i++) {
+                console.log('Oh powerful ' + aliens[i] + ', we humans offer our unconditional surrender!')
+            }
+
+        }
+
+
+
+
+
+
+
+        // When you're ready to test your code, uncomment the below and run:
+
+        const aliens = ["Blorgous", "Glamyx", "Wegord", "SpaceKing"];
+
+        greetAliens(aliens);
+
+
+        //instead of map()
+
+
+        // Write your code here:
+
+        const convertToBaby = animals => {
+            const babyArray = [];
+            for (let i = 0; i < animals.length; i++) {
+                //console.log('baby ' + animals[i]);
+
+                babyArray.push('baby ' + animals[i])
+                    //console.log(babyArray)
+            }
+            return babyArray
+
+        }
+
+
+
+
+
+
+
+        // When you're ready to test your code, uncomment the below and run:
+
+        const animals = ['panda', 'turtle', 'giraffe', 'hippo', 'sloth', 'human'];
+
+        console.log(convertToBaby(animals))
+
+        /*
+        We wrote a function, smallestPowerOfTwo(), which takes in an array.
+
+        Within our function, we create a new array called results. 
+        We then loop through the argument array and calculate the smallest power of two which 
+        is greater than the current element before using .push() to add it to results.
+
+        It’s not doing what we want. Can you fix our code, please?
+        */
+        const numbers = [5, 3, 9, 30];
+
+        const smallestPowerOfTwo = arr => {
+            let results = [];
+            // The 'outer' for loop - loops through each element in the array
+            for (let i = 0; i < arr.length; i++) {
+                number = arr[i];
+                //console.log(i)
+                // The 'inner' while loop - searches for smallest power of 2 greater than the given number
+                j = 1;
+                while (j < number) {
+                    j = j * 2;
+                }
+                results.push(j);
+            }
+            return results
+        }
+
+        console.log(smallestPowerOfTwo(numbers))
+            // Should print the returned array [ 8, 4, 16, 32 ] instead prints the returned array [8]
+    </script>
+
+
+</body>
+
+</html>

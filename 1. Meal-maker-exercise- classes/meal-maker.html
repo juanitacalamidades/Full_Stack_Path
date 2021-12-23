@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Maker </title>
+</head>
+
+<body>
+
+
+
+    <script>
+        const menu = {
+            _courses: {
+                appetizers: [],
+                mains: [],
+                desserts: [],
+                get courses() {
+                    return {
+                        appetizers: this.appetizers,
+                        mains: this.mains,
+                        desserts: this.desserts
+                    }
+                }
+            },
+            get appetizers() {
+                return this._courses.appetizers;
+            },
+            set appetizers(appetizerIn) {
+                this._courses.appetizers = appetizerIn;
+            },
+            get mains() {
+                return this._courses.mains;
+
+            },
+            set mains(mainIn) {
+                this._courses.mains = mainIn;
+            },
+            get desserts() {
+                return this._courses.desserts
+            },
+            set desserts(dessertIn) {
+                this._courses.desserts = dessertIn;
+            },
+
+
+            addDishToCourse(courseName, dishName, dishPrice) {
+
+                const dish = {
+                    name: dishName,
+                    price: dishPrice,
+                };
+                return this._courses[courseName].push(dish);
+            },
+
+            /*
+                Now, we’re going to need another function which will allow us to get a random dish 
+                from a course on the menu, which will be necessary for generating a random meal.
+                Create a method inside the menu object called .getRandomDishFromCourse(). It will take in 
+                one parameter which is the courseName.
+            
+            
+                There are a few steps in getting the .getRandomDishFromCourse() to work.
+
+                1-  Retrieve the array of the given course’s dishes from the menu‘s _courses object and store in a variable called dishes.
+                2- Generate a random index by multiplying Math.random() by the length of the dishes array (This will guarantee that the random number will be between 0 and the length of the array)
+                3- Round that generated number to a whole number by using Math.floor() on the result.
+                4- Return the dish located at that index in dishes.
+
+
+                */
+
+
+            getRandomDishFromCourse(courseName) {
+                const dishes = this._courses[courseName];
+                const randomIndex = Math.floor(Math.random() * dishes.length);
+
+                return dishes[randomIndex];
+            },
+
+            generateRandomMeal() {
+                const appetizer = this.getRandomDishFromCourse('appetizers');
+                const main = this.getRandomDishFromCourse('mains');
+                const dessert = this.getRandomDishFromCourse('desserts');
+
+                const totalPrice = appetizer.price + main.price + dessert.price;
+
+                console.log(appetizer)
+                return `Your menu is: ${appetizer.name}, ${main.name}, and ${dessert.name}. And the total price is ${totalPrice}. `
+
+
+            }
+
+        };
+
+
+        let meal = menu.addDishToCourse('mains', 'Pizza', 9.00);
+        let meal2 = menu.addDishToCourse('appetizers', 'Spring Salad', 12.00);
+        let meal3 = menu.addDishToCourse('desserts', 'Coulant', 6.00);
+        let meal4 = menu.addDishToCourse('mains', 'Pasta Puttanesca', 15.00);
+
+        let randomDish = menu.getRandomDishFromCourse('mains');
+        let randomMeal = menu.generateRandomMeal();
+
+        console.log(randomMeal);
+        console.log(randomDish);
+        console.log(meal, meal2, meal3, meal4);
+    </script>
+</body>
+
+</html>
